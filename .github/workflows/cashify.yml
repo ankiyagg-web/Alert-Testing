@@ -1,0 +1,25 @@
+name: Cashify alert
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"    # every 30 minutes
+  workflow_dispatch:          # lets you press "Run workflow" to test
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: |
+          pip install requests playwright
+          playwright install --with-deps chromium
+      - name: Run alert
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: python cashify_alert.py
