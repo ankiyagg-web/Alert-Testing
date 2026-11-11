@@ -21,7 +21,7 @@ BOT_TOKEN = os.environ["BOT_TOKEN"]   # stored safely in GitHub Secrets
 CHAT_ID = os.environ["CHAT_ID"]       # stored safely in GitHub Secrets
 
 ONLY_5G = True            # True = only 5G phones. False = also alert non-5G
-LIMIT_5G = 30000          # 5G phone must be below this price
+LIMIT_5G = 10000          # 5G phone must be below this price
 LIMIT_NORMAL = 11000      # used only when ONLY_5G = False (non-5G limit)
 
 ANY_PRICE_BRANDS = ["Nothing"]   # for these brands: alert for ANY in-stock phone, any price, 5G or not
